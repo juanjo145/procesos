@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+
+body {
+  background: #0ba8ec;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  margin: auto;
+  width: 50%;
+  max-width: 500px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  padding: 12px 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(#db63ff, #b940ff);
+  border: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background: #b940ff;
+}
+
+input[type="submit"]:active {
+  transform: translateY(2px);
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    width: 100%;
+  }
+}
+nav {
+  background-color: #22223b;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 50px;
+}
+
+nav ul li a:hover {
+  color: #b940ff;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.gallery-item {
+  width: calc(20% - 20px);
+  margin: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
+}
