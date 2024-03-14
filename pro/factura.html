@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factura</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    #contenido-factura {
+      width: 80%;
+      margin: 0 auto;
+      list-style-type: none;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    #contenido-factura li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #total-factura {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Estilos para el botón de volver */
+    .volver {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .volver:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+    <h2>Factura</h2>
+
+    <!-- Aquí se mostrará el contenido de la factura -->
+    <ul id="contenido-factura"></ul>
+
+    <div id="total-factura"></div>
+    
+    <!-- Enlace para volver a la página de misCompras -->
+    <a href="misCompras.html" class="volver">Volver a Mis Compras</a>
+
+    <script>
+        // Obtener la clave de la factura desde la URL
+        var params = new URLSearchParams(window.location.search);
+        var claveFactura = params.get("factura");
+
+        // Obtener los datos de la factura desde localStorage
+        var datosFactura = JSON.parse(localStorage.getItem(claveFactura)) || { productos: [], total: 0 };
+
+        // Mostrar los productos en la factura
+        var contenidoFacturaElemento = document.getElementById("contenido-factura");
+        datosFactura.productos.forEach(function(producto) {
+            var nuevoItem = document.createElement("li");
+            nuevoItem.textContent = producto.nombre + " - $" + producto.precio;
+            contenidoFacturaElemento.appendChild(nuevoItem);
+        });
+
+        // Mostrar el total de la factura
+        var totalFacturaElemento = document.getElementById("total-factura");
+        totalFacturaElemento.textContent = "Total: $" + datosFactura.total.toFixed(2);
+    </script>
+</body>
+</html>

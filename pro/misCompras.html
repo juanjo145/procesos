@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Compras</title>
+  <style>
+    /* Estilos para la lista de facturas */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .factura {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    .factura-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .factura-total {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .factura-detalle {
+      margin-top: 10px;
+    }
+
+    .detalle-producto {
+      margin-bottom: 5px;
+    }
+
+    /* Estilos para la lista de facturas */
+    #lista-facturas {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #lista-facturas li {
+      margin-bottom: 10px;
+    }
+
+    #lista-facturas li:before {
+      content: "* ";
+      font-weight: bold;
+    }
+
+    /* Estilos para el enlace de volver */
+    #volver {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #volver a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    #volver a:hover {
+      background-color: #555;
+    }
+
+    /* Estilos para el botón de eliminar */
+    .eliminar-btn {
+      background-color: #ff4d4d;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 10px; /* Espacio adicional a la izquierda del botón */
+    }
+
+    .eliminar-btn:hover {
+      background-color: #ff6666;
+    }
+  </style>
+</head>
+<body>
+    <h2>Mis Compras</h2>
+
+    <!-- Aquí se mostrarán las facturas guardadas -->
+    <ul id="lista-facturas"></ul>
+
+    <!-- Enlace para volver a la página de "Productos" -->
+    <div id="volver">
+        <a href="productos.html">Volver a Productos</a>
+    </div>
+
+    <script>
+        // Obtener la lista de facturas desde localStorage
+        var facturas = JSON.parse(localStorage.getItem("facturas")) || [];
+
+        // Obtener el contenedor donde se mostrarán las facturas
+        var listaFacturas = document.getElementById("lista-facturas");
+
+        // Mostrar cada factura guardada
+        facturas.forEach(function(claveFactura, index) {
+            var enlaceFactura = document.createElement("a");
+            enlaceFactura.href = "factura.html?factura=" + claveFactura;
+            enlaceFactura.textContent = "Factura #" + (index + 1);
+
+            var eliminarBtn = document.createElement("button");
+            eliminarBtn.className = "eliminar-btn";
+            eliminarBtn.textContent = "Eliminar";
+            eliminarBtn.setAttribute("data-factura", claveFactura);
+            eliminarBtn.onclick = function() {
+              // Eliminar la factura de la lista de facturas
+              var facturaIndex = facturas.indexOf(claveFactura);
+              if (facturaIndex !== -1) {
+                facturas.splice(facturaIndex, 1);
+                // Actualizar la lista de facturas en el almacenamiento local
+                localStorage.setItem("facturas", JSON.stringify(facturas));
+                // Actualizar la lista de facturas en la página
+                listaFacturas.removeChild(enlaceFactura.parentNode);
+              }
+            };
+
+            var listItem = document.createElement("li");
+            listItem.appendChild(enlaceFactura);
+            listItem.appendChild(eliminarBtn);
+            listaFacturas.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
