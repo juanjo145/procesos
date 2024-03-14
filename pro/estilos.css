@@ -168,4 +168,56 @@ input[type="tipoUsuario"] {
   background-color: #e8e8e8; /* Un color de fondo más sobrio para la página de administrador */
 }
 
+.titulo-box {
+  background-color: #ffffff; /* Color de fondo blanco */
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra suave */
+  border-radius: 8px; /* Bordes redondeados */
+  text-align: center; /* Alineación central del texto */
+}
 
+.titulo-box h2 {
+  margin: 0; /* Elimina el margen por defecto del h2 */
+  color: #333333; /* Color de texto oscuro para contraste */
+  font-size: 24px; /* Tamaño de fuente grande */
+}
+.titulo-box {
+  background-color: #9bf0f0; /* Un azul sobrio */
+  padding: 40px; /* Aumenta el relleno para agrandar el div */
+  margin: 20px auto; /* Centra el div y añade margen arriba y abajo */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra suave */
+  border-radius: 8px; /* Bordes redondeados */
+  width: 80%; /* Ancho relativo al contenedor padre */
+  max-width: 800px; /* Ancho máximo para evitar que sea demasiado grande */
+  text-align: center; /* Alineación central del texto */
+  color: white; /* Texto en color blanco para contraste */
+}
+.textarea-centrada {
+  display: block;
+  margin: 0 auto; /* Esto centrará el textarea horizontalmente */
+  width: 95%; /* O el ancho que prefieras */
+}
+.boton-centrado {
+  text-align: center; /* Centra el contenido del div */
+  margin-top: 20px; /* Espacio por encima del botón */
+}
+
+.boton-inicio {
+  display: inline-block; /* Permite aplicar margen y relleno */
+  padding: 10px 20px; /* Relleno alrededor del texto */
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border-radius: 5px; /* Bordes redondeados del botón */
+  transition: background-color 0.3s; /* Transición suave al cambiar el color de fondo */
+}
+
+.boton-inicio:hover {
+  background-color: #b3a400; /* Color de fondo al pasar el ratón por encima */
+}
+
+h5 {
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  color: black; /* Color de texto negro */
+}

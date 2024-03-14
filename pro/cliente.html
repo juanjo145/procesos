@@ -17,15 +17,18 @@
         </ul>
     </nav>
 
-    <h2>Quejas y Reclamos</h2>
-    <p>¿Tienes alguna pregunta, queja, reclamo o sugerencia? Nos gustaría escucharte.</p>
-    
+
+    <div  class="titulo-box">
+        <h2>Quejas y Reclamos</h2>
     <form action="enviar-queja.php" method="post">
-        <textarea name="mensaje" rows="6" cols="50" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <h5>¿Tienes alguna pregunta, queja, reclamo o sugerencia? Nos gustaría escucharte.</h5> <!-- Aquí agregas el título -->
+        <textarea class="textarea-centrada" name="mensaje" rows="6" cols="50" placeholder="Escribe tu mensaje aquí..."></textarea>
+
         <br>
         <input type="submit" value="Enviar">
+        <a href="principal.html" class="boton-inicio">Volver al Inicio</a>
     </form>
+    </div>
     
-    <a href="principal.html" style="float:right">Volver al Inicio</a>
 </body>
 </html>
