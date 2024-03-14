@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Página de Quejas y Reclamos</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+
+<body class="fondo-cliente">
+    <nav>
+        <ul>
+            <li><img src="logo.png" alt="Logo" width="120" height="65"></li>
+            <li><a href="principal.html">Inicio</a></li>
+            <li><a href="index.html">Iniciar sesión</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <!-- Puedes agregar más enlaces si es necesario -->
+        </ul>
+    </nav>
+
+    <h2>Quejas y Reclamos</h2>
+    <p>¿Tienes alguna pregunta, queja, reclamo o sugerencia? Nos gustaría escucharte.</p>
+    
+    <form action="enviar-queja.php" method="post">
+        <textarea name="mensaje" rows="6" cols="50" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+    
+    <a href="principal.html" style="float:right">Volver al Inicio</a>
+</body>
+</html>
