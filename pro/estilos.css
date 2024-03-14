@@ -164,5 +164,8 @@ input[type="tipoUsuario"] {
     border: 1px solid #ddd;
 }
 
+.fondo-administrador {
+  background-color: #e8e8e8; /* Un color de fondo más sobrio para la página de administrador */
+}
 
 
