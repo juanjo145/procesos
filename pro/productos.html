@@ -1,66 +1,143 @@
-<!--
-Crear un login y una página para registrar a un nuevo usuario con los siguientes datos:
-usuario y contraseña.
-
-
-(index.html) Login 	  -> Si el usuario existe 	 -> principal.html
-(index.html) Login    -> Si el usuario no existe -> (index.html) Login
- registrar.html       -> Nuevo usuario           -> (index.html) Login
-
-El login tendrá la opción para registrar.
-Usar "estilos.css"
-
--->
-
-<html>
-
-<head>
-<meta charset="UTF-8">
-<title>Principal</title>
-<link rel="stylesheet" href="estilos.css">
-</head>
-
-<body>
-    <nav>
-        <ul>
-          <li><a href="principal.html">Inicio</a></li>
-          <li><a href="index.html">Iniciar sesion</a></li>
-          <li><a href="productos.html">Productos</a></li>
-        </ul>
-      </nav>
-<form>
-<h2>Productos disponibles</h2>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería</title>
-  <link rel="stylesheet" href="estilos.css">
+  <title>Productos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    nav {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    #logo {
+      width: 50px; /* Ajusta el ancho según sea necesario */
+      height: auto; /* Mantiene la proporción */
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .gallery-item {
+      width: 200px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery-item button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .gallery-item button:hover {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="logo.png" alt="Imagen 1">
+    <nav>
+        <ul>
+          <li><a href="principal.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="misCompras.html">Mis Compras</a></li>
+          <li><a href="carrito.html">Carrito</a></li> <!-- Enlace al carrito -->
+        </ul>
+    </nav>
+
+    <img id="logo" src="logo.png" >
+
+    <h2>Productos disponibles</h2>
+
+    <div class="gallery">
+        <!-- Producto 1 -->
+        <div class="gallery-item">
+            <img src="imagenesProductos/p1.jpg" alt="Producto 1">
+            <p>Descripción del Producto 1</p>
+            <p>Precio: $10.99</p>
+            <button onclick="agregarAlCarrito('Producto 1', 10.99)">Agregar al carrito</button>
+        </div>
+        <!-- Producto 2 -->
+        <div class="gallery-item">
+            <img src="imagenesProductos/p2.jpg" alt="Producto 2">
+            <p>Descripción del Producto 2</p>
+            <p>Precio: $15.50</p>
+            <button onclick="agregarAlCarrito('Producto 2', 15.50)">Agregar al carrito</button>
+        </div>
+        <!-- Producto 3 -->
+        <div class="gallery-item">
+            <img src="imagenesProductos/p3.jpg" alt="Producto 3">
+            <p>Descripción del Producto 3</p>
+            <p>Precio: $8.75</p>
+            <button onclick="agregarAlCarrito('Producto 3', 8.75)">Agregar al carrito</button>
+        </div>
+        <!-- Producto 4 -->
+        <div class="gallery-item">
+            <img src="imagenesProductos/p4.jpg" alt="Producto 4">
+            <p>Descripción del Producto 4</p>
+            <p>Precio: $12.25</p>
+            <button onclick="agregarAlCarrito('Producto 4', 12.25)">Agregar al carrito</button>
+        </div>
+        <!-- Producto 5 -->
+        <div class="gallery-item">
+            <img src="imagenesProductos/p5.jpg" alt="Producto 5">
+            <p>Descripción del Producto 5</p>
+            <p>Precio: $9.99</p>
+            <button onclick="agregarAlCarrito('Producto 5', 9.99)">Agregar al carrito</button>
+        </div>
     </div>
-    <div class="gallery-item">
-      <img src="imagen2.jpg" alt="Imagen 2">
-    </div>
-    <div class="gallery-item">
-      <img src="imagen3.jpg" alt="Imagen 3">
-    </div>
-    <div class="gallery-item">
-      <img src="imagen4.jpg" alt="Imagen 4">
-    </div>
-    <div class="gallery-item">
-      <img src="imagen5.jpg" alt="Imagen 5">
-    </div>
-  </div>
+
+    <script>
+      function agregarAlCarrito(producto, precio) {
+        // Store the product in localStorage
+        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        carrito.push({nombre: producto, precio: parseFloat(precio)});
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        // Show a confirmation message
+        alert(producto + " ha sido agregado al carrito.");
+    }
+    </script>
 </body>
 </html>
-<br>
-
-</form>
-</body>
-</html>
-
