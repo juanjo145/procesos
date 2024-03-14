@@ -35,7 +35,8 @@ h2 {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"]
+input[type="tipoUsuario"] {
   display: block;
   padding: 12px 20px;
   width: 100%;
@@ -145,3 +146,23 @@ body {
 .gallery-item img:hover {
   transform: scale(1.1);
 }
+
+
+/* estilos.css */
+
+/* Resto de tus estilos existentes */
+
+input[type="text"],
+input[type="password"],
+input[type="tipoUsuario"] {
+    display: block;
+    padding: 12px 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+
+
