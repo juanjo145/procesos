@@ -104,34 +104,45 @@
 
     <a href="productos.html">Volver a la página de productos</a>
 
-    <button class="pago" onclick="realizarPago()">Proceder al Pago</button>
-
+    <button class="pago" onclick="realizarPago()"> Proceder al Pago </button>
 
     <script>
-        function realizarPago() {
-            // Simular el proceso de pago
-            alert("¡Pago realizado con éxito!");
-        
-            // Guardar los datos de la factura en localStorage para que puedan ser accedidos por factura.html
-            var contenidoCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
-            var totalCarrito = contenidoCarrito.reduce(function(total, producto) {
-                return total + Number(producto.precio);
-            }, 0);
-            var factura = { productos: contenidoCarrito, total: totalCarrito };
-            var claveFactura = "factura-" + Date.now();
-            localStorage.setItem(claveFactura, JSON.stringify(factura));
-        
-            // Agregar la clave de la factura a la lista de facturas
-            var facturas = JSON.parse(localStorage.getItem("facturas")) || [];
-            facturas.push(claveFactura);
-            localStorage.setItem("facturas", JSON.stringify(facturas));
-        
-            // Vaciar el carrito
-            localStorage.setItem("carrito", JSON.stringify([]));
-        
-            // Redirigir a la página de factura
-            window.location.href = "factura.html?factura=" + claveFactura;
-        }
+      function realizarPago() {
+            var ventanaPago = window.open('pago.html', '_blank');
+
+            window.addEventListener('message', function(event) {
+              // Verifica si el mensaje proviene de la ventana de pago
+              if (event.source === ventanaPago) {
+                var mensaje = event.data;
+
+                if (mensaje === 'pago_completado') {
+                  // Guarda los datos de la factura en localStorage
+                  var contenidoCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
+                  var totalCarrito = contenidoCarrito.reduce(function(total, producto) {
+                    return total + Number(producto.precio);
+                  }, 0);
+                  var factura = { productos: contenidoCarrito, total: totalCarrito };
+                  var claveFactura = "factura-" + Date.now();
+                  localStorage.setItem(claveFactura, JSON.stringify(factura));
+
+                  // Agrega la clave de la factura a la lista de facturas
+                  var facturas = JSON.parse(localStorage.getItem("facturas")) || [];
+                  facturas.push(claveFactura);
+                  localStorage.setItem("facturas", JSON.stringify(facturas));
+
+                  // Vacia el carrito
+                  localStorage.setItem("carrito", JSON.stringify([]));
+                  
+                  // Redirige a la página de factura
+                  window.location.href = "factura.html?factura=" + claveFactura;
+                  
+
+                } else if (mensaje === 'pago_cancelado') {
+                  alert("¡El pago se ha cancelado!");
+                }
+              }
+            });
+          }
         
 
         // Obtener el contenido del carrito almacenado en localStorage
